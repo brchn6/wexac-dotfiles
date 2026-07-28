@@ -4,7 +4,7 @@ description: |
   Cluster shell toolkit for LSF/HPC users. Provides tmux session management
   with automatic logging (tns/tni/tlog/tas/tks), LSF job monitoring and queue
   intelligence (bjm/bqinfo/bsubjup), port inspection (myports/mykill),
-  parquet-tools shortcuts, user info, and everyday productivity functions.
+  user info, and everyday productivity functions.
   Use when the user is on a cluster (LSF/slurm), asks about tmux logging,
   wants to submit jobs, inspect ports, or needs help with shell productivity.
   Voice triggers: "cluster tools", "tmux toolkit", "LSF helpers", "dotfiles".
@@ -104,8 +104,7 @@ source ~/.bashrc
 | Function | Usage | Description |
 |---|---|---|
 | `xa` | `xa CMD -- args` | xargs wrapper preserving aliases/functions |
-| `pt*` | `ptc file.parquet` | parquet-tools shortcuts |
-| `bcftools_view` | `bcftools_view file.vcf.gz` | bcftools + less |
+
 | `rsyncwdel` | `rsyncwdel src dest` | rsync + delete origin on success |
 | `userinfo` | `userinfo <name\|uid>` | User details + groups + activity |
 | `hist_search` | `hist_search <pattern>` | Grep history |

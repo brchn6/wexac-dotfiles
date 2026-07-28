@@ -77,9 +77,7 @@ Shows UID, groups, member counts, running processes, login status.
 |---|---|
 | `xa CMD` | `xargs` wrapper that preserves aliases and functions |
 | `hist_search <pattern>` | Grep command history |
-| `bcftools_view <file>` | `bcftools view` piped through less |
 | `rsyncwdel <src> <dest>` | rsync + delete origin on success |
-| `pt*` family | `parquet-tools` shortcuts (`ptc`, `ptc20`, `pts`, `ptsize`, etc.) |
 
 ### 🔧 Prompt & venv
 

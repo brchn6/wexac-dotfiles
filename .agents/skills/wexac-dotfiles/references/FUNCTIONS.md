@@ -286,32 +286,6 @@ Unlike plain `xargs`, `xa`:
 
 ---
 
-### `parquet-tools` shortcuts
-
-```
-ptc file.parquet          # cat as TSV
-ptc20 file.parquet        # cat first 20 rows as TSV
-ptc1 file.parquet         # cat first 1 row as TSV
-ptimport file.csv         # import CSV to parquet
-ptmerge file1 file2       # merge parquet files
-ptmeta file.parquet       # metadata
-ptrowcount file.parquet   # row count
-pts file.parquet          # schema (piped through jq)
-ptsize file.parquet       # file/row sizes
-```
-
----
-
-### `bcftools_view <file>` — View VCF/BCF
-
-```
-bcftools_view file.vcf.gz
-```
-
-Calls `bcftools view file.vcf.gz | less`. Requires bcftools.
-
----
-
 ### `rsyncwdel <src> <dest>` — rsync + delete
 
 ```

@@ -168,22 +168,6 @@ taf() {
 export -f tks tas tls tkas taf
 
 # =============================================================================
-# Parquet tools shortcuts
-# =============================================================================
-
-pt()         { parquet-tools "$@"; }
-ptc()        { parquet-tools cat -f tsv "$@"; }
-ptc20()      { parquet-tools cat -f tsv --limit 20 "$@"; }
-ptc1()       { parquet-tools cat -f tsv --limit 1 "$@"; }
-ptimport()   { parquet-tools import "$@"; }
-ptmerge()    { parquet-tools merge "$@"; }
-ptmeta()     { parquet-tools meta "$@"; }
-ptrowcount() { parquet-tools row-count "$@"; }
-pts()        { parquet-tools schema "$@" | jq; }
-ptsize()     { parquet-tools size "$@"; }
-export -f pt ptc ptc20 ptimport ptmerge ptmeta ptrowcount pts ptsize
-
-# =============================================================================
 # xa — xargs wrapper that preserves quotes, aliases, and functions
 # =============================================================================
 xa() {
@@ -269,13 +253,6 @@ set_prompt() {
     fi
 
     PS1="$Magenta$EnvName $Green$GitBranch $White\$(date +%T) $Status $Blue\u@\h:$Yellow\w $Symbol $White"
-}
-
-# =============================================================================
-# bcftools_view — pipe bcftools output through less
-# =============================================================================
-bcftools_view() {
-    bcftools view "$1" | less
 }
 
 # =============================================================================
