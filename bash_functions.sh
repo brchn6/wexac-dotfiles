@@ -1,4 +1,3 @@
-# =============================================================================
 # wexac-dotfiles — ~/.bash_functions.sh
 #
 # A collection of bash functions for cluster work, tmux, file inspection,
@@ -8,11 +7,8 @@
 #   [ -f ~/.bash_functions.sh ] && . ~/.bash_functions.sh
 #
 # If TMUX_LOG_DIR is not set, logs default to $HOME/tmux-logs/.
-# =============================================================================
 
-# =============================================================================
 # LSF helpers
-# =============================================================================
 
 # bp — bpeek shortcut (view LSF job output)
 bp() { bpeek "$@"; }
@@ -45,9 +41,7 @@ bjm() {
   '
 }
 
-# =============================================================================
 # OpenCode session helpers
-# =============================================================================
 
 # osl — list opencode sessions (last N, default 100)
 osl() {
@@ -119,9 +113,7 @@ osc() {
   fi
 }
 
-# =============================================================================
 # Tmux helpers
-# =============================================================================
 
 # tks — kill a tmux session
 tks() { tmux kill-session -t "$@"; }
@@ -167,9 +159,7 @@ taf() {
 
 export -f tks tas tls tkas taf
 
-# =============================================================================
 # xa — xargs wrapper that preserves quotes, aliases, and functions
-# =============================================================================
 xa() {
     local cmd="$1"
     shift
@@ -187,16 +177,12 @@ xa() {
 }
 export -f xa
 
-# =============================================================================
 # History search
-# =============================================================================
 hist_search() {
     history | grep --color=auto "$1"
 }
 
-# =============================================================================
 # Prompt helpers
-# =============================================================================
 parse_git_branch() {
     git branch 2>/dev/null | grep '*' | sed 's/* //'
 }
@@ -255,9 +241,7 @@ set_prompt() {
     PS1="$Magenta$EnvName $Green$GitBranch $White\$(date +%T) $Status $Blue\u@\h:$Yellow\w $Symbol $White"
 }
 
-# =============================================================================
 # rsync with delete (moves files)
-# =============================================================================
 rsyncwdel() {
     rsync -avz --no-g --info=progress2 --progress "$1" "$2"
 
@@ -269,7 +253,6 @@ rsyncwdel() {
     fi
 }
 
-# =============================================================================
 # bsubjup — submit Jupyter Lab via LSF
 #
 # Usage:
@@ -277,7 +260,6 @@ rsyncwdel() {
 #   bsubjup -m 100GB       # 100GB
 #   bsubjup -m 100GB -t 02:00  # With 2-hour wall time
 #   bsubjup -q interactive      # Different queue
-# =============================================================================
 bsubjup() {
     local mem="42GB"
     local time=""
@@ -334,14 +316,12 @@ bsubjup() {
     done
 }
 
-# =============================================================================
 # tnd — tmux send keys (or new session)
 #
 # Usage:
 #   tnd                     # Start a new tmux session
 #   tnd mysession           # Create/attach to 'mysession'
 #   tnd mysession ls -la    # Send 'ls -la' to 'mysession'
-# =============================================================================
 tnd() {
   if [ -z "$1" ]; then
     tmux
@@ -356,17 +336,13 @@ tnd() {
   tmux send-keys -t "$session" "$*" C-m
 }
 
-# =============================================================================
 # bsubistun — interactive shell on a compute node (e.g. for VS Code tunnel)
-# =============================================================================
 bsubistun() {
   bsub -R "rusage[mem=77GB]" -n 1 -q interactive -J "Tunnel🎵" -Is /bin/bash -l
   echo "💡 Now inside the compute node — run: code tunnel"
 }
 
-# =============================================================================
 # bkill_non_is — kill non-interactive LSF jobs (safest to skip interactive ones)
-# =============================================================================
 bkill_non_is() {
   for jobid in $(bjobs | awk 'NR > 1 {print $1}'); do
     long_output=$(bjobs -l "$jobid" 2>/dev/null | tr -d '\n' | tr -d ' ')
@@ -379,9 +355,7 @@ bkill_non_is() {
   done
 }
 
-# =============================================================================
 # Tmux logged runner: tns (batch) / tni (interactive) / tlog (logger)
-# =============================================================================
 # Logs live under: ${TMUX_LOG_DIR:-$HOME/tmux-logs}/<session>/
 #
 # Usage:
@@ -390,7 +364,6 @@ bkill_non_is() {
 #   tns  CMD ...             # auto-named batch session
 #   tni  [NAME]              # interactive (attach), logs enabled, no auto-kill
 #   tlog [all|status|pane]   # log/report on tmux panes
-# =============================================================================
 
 # Ensure tns-clean is in PATH
 if ! command -v tns-clean &>/dev/null && [ -f "$HOME/.local/bin/tns-clean" ]; then
@@ -565,9 +538,7 @@ tlog() {
   fi
 }
 
-# =============================================================================
 # Port inspector
-# =============================================================================
 # myports — list all listening ports with process info
 # mykill <port> — kill the process on a port
 
@@ -625,9 +596,7 @@ mykill() {
 }
 export -f myports mykill
 
-# =============================================================================
 # User info — name or UID → details, groups, activity
-# =============================================================================
 userinfo() {
   local user="$1"
   if [ -z "$user" ]; then
@@ -704,9 +673,7 @@ userinfo() {
 }
 export -f userinfo
 
-# =============================================================================
 # Cluster queue intelligence (LSF)
-# =============================================================================
 #   bqinfo              → overview: all active queues + top users
 #   bqinfo <queue>      → per-queue user breakdown + efficiency
 
