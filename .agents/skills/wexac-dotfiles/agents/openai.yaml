@@ -1,0 +1,14 @@
+interface:
+  display_name: "WEXAC Dotfiles"
+  short_description: "Cluster shell toolkit — tmux logging, LSF helpers, port inspector"
+  description: |
+    Installs and teaches the wexac-dotfiles cluster toolkit. Includes tmux session
+    management with automatic logging (tns/tni/tlog), LSF job monitoring and queue
+    intelligence (bjm/bqinfo/bsubjup), port inspection (myports/mykill), parquet-tools
+    shortcuts, user info, and everyday productivity functions for HPC/LSF users.
+  instructions:
+    - "When the user says 'install wexac-dotfiles', run install.sh or give manual steps"
+    - "When the user asks about tmux functions, read SKILL.md and FUNCTIONS.md"
+    - "When the user is on a cluster and asks about jobs/queues, suggest bqinfo/bjm"
+    - "When the user wants to run a long job, suggest tns for batch or tni for interactive"
+    - "Never expose personal paths or secrets — this is a sanitized public toolkit"
