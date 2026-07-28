@@ -124,12 +124,4 @@ source ~/.bashrc
 
 Or just point them to the git repo.
 
-## Sanitization
-
-This repo is **free of personal info, secrets, and Weizmann/WEXAC-internal paths**. The original `~/.bash_functions.sh` was scrubbed of:
-- Personal paths (`/home/labs/pilpel/...`, `.../Udi_Saas_apps/...`)
-- Hardcoded tool versions (`/usr/share/lsf/10.1/...`)
-- Any credentials, tokens, or auth keys
-- References to specific users
-
 The LSF functions assume `bpeek`, `bjobs`, `bqueues`, `bsub`, etc. are in PATH.
